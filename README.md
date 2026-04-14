@@ -32,6 +32,7 @@ This system reduces manual effort and improves communication between students an
   - Attendance 📊
 - Provides instant responses
 - Simulates real-time typing experience
+<img width="1920" height="1080" alt="Screenshot 2026-04-14 110117" src="https://github.com/user-attachments/assets/a5aa1c58-5e2f-4f12-9d7a-820aab7f5418" />
 
 ---
 
@@ -43,6 +44,7 @@ This system reduces manual effort and improves communication between students an
   - Seen 🔵  
   - Resolved 🟢  
   - Delayed 🟣 (auto-detected)
+<img width="1920" height="1080" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/b4212702-c683-46b7-bcbf-cbb4ce733eb6" />
 
 ---
 
@@ -55,6 +57,7 @@ This system reduces manual effort and improves communication between students an
   - Accounts
 - Each role views only relevant complaints
 - Status update system with dropdown UI
+<img width="1920" height="1080" alt="Screenshot 2026-04-14 110411" src="https://github.com/user-attachments/assets/f9aa0c3d-38d1-495f-8e18-e2fca438b13b" />
 
 ---
 
@@ -62,6 +65,7 @@ This system reduces manual effort and improves communication between students an
 - Total complaints
 - Pending, Seen, Resolved counts
 - Helps in monitoring resolution efficiency
+<img width="1920" height="1080" alt="Screenshot 2026-04-11 123234" src="https://github.com/user-attachments/assets/b16abf77-0c36-4b84-8efc-9bf709e43af4" />
 
 ---
 
