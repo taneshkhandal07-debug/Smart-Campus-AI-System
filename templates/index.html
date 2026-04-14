@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Campus Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        
+        <div class="sidebar-header">
+            <h2>🎓 Campus</h2>
+        </div>
+
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" onchange="toggleDarkMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <button onclick="showPanel('chat')">💬 Chatbot</button>
+        <button onclick="showPanel('complaint')">🛠 Complaints</button>
+        <button onclick="showPanel('myComplaints')">📄 My Complaints</button>
+        <button onclick="showPanel('faq')">📚 FAQs & Contact</button>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Chat -->
+        <div id="chat" class="panel active">
+            <h2>💬 Chatbot</h2>
+            <div id="chatbox"></div>
+
+            <!-- Typing Indicator -->
+            <div id="typing" class="typing" style="display:none;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="input-area">
+                <textarea id="userInput" placeholder="Type your message..."></textarea>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- Complaint -->
+        <div id="complaint" class="panel">
+            <h2>🛠 Submit Complaint</h2>
+
+            <div class="complaint-box">
+
+                <!-- ✅ NEW DROPDOWN -->
+                <select id="complaintCategory" class="complaint-dropdown">
+                    <option>General Complaint</option>
+                    <option>Mentor Issue</option>
+                    <option>Faculty Issue</option>
+                    <option>HOD Issue</option>
+                    <option>Hostel Issue</option>
+                    <option>WiFi / Technical Issue</option>
+                    <option>Placement (TPO) Issue</option>
+                    <option>Accounts / Fees Issue</option>
+                    <option>🚨 Safety / Harassment Concern</option>
+                </select>
+
+                <textarea id="complaintText" placeholder="Describe your issue..."></textarea>
+                <button onclick="submitComplaint()">Submit</button>
+            </div>
+        </div>
+
+        <!-- My Complaints -->
+        <div id="myComplaints" class="panel">
+            <h2>📄 My Complaints</h2>
+            <button onclick="loadComplaints()">Refresh</button>
+            <div id="complaintList"></div>
+        </div>
+
+        <!-- FAQs -->
+        <div id="faq" class="panel">
+            <h2>📚 FAQs & Contact</h2>
+
+            <div class="faq-buttons">
+                <button onclick="showAnswer('library')">Library Location</button>
+                <button onclick="showAnswer('fees')">How to Pay Fees?</button>
+                <button onclick="showAnswer('exam')">Exam Schedule</button>
+            </div>
+
+            <div id="faqAnswer" class="faq-answer"></div>
+
+            <div class="contact-box">
+                <h3>📞 Contact Details</h3>
+                <p>🌐 Website: www.jecrcuniversity.edu.in</p>
+                <p>📞 Phone: 1800-120-5616</p>
+                <p>🏢 Office: Admin Block (NYB)</p>
+
+                <h3>📧 General / Admission Support</h3>
+                <p>• admission@jecrcu.edu.in</p>
+                <p>• director.admission@jecrcu.edu.in</p>
+
+                <h3>📧 Important Support Emails</h3>
+                <p>• registrar@jecrcu.edu.in → official/student issues</p>
+                <p>• accounts@jecrcu.edu.in → fees/payment issues</p>
+                <p>• coe@jecrcu.edu.in → exams/results</p>
+                <p>• tpo@jecrcu.edu.in → placements</p>
+                <p>• hr@jecrcu.edu.in → HR/internship related</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup"></div>
+
+<script>
+
+// Panel switch
+function showPanel(panelId) {
+    document.querySelectorAll(".panel").forEach(p => {
+        p.classList.remove("active");
+    });
+
+    setTimeout(() => {
+        document.getElementById(panelId).classList.add("active");
+    }, 100);
+}
+
+// Chat
+function sendMessage() {
+    let input = document.getElementById("userInput").value;
+    if (!input.trim()) return;
+
+    let chatbox = document.getElementById("chatbox");
+    let typing = document.getElementById("typing");
+
+    // User message
+    chatbox.innerHTML += `<div class="message user">${input}</div>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    document.getElementById("userInput").value = "";
+
+    // Show typing
+    typing.style.display = "flex";
+
+    // Fake delay (realistic AI feel)
+    setTimeout(() => {
+        fetch("/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message: input})
+        })
+        .then(res => res.json())
+        .then(data => {
+            typing.style.display = "none";
+
+            chatbox.innerHTML += `<div class="message bot">${data.reply}</div>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+    }, 800 + Math.random() * 700); // random delay
+}
+
+// Complaint
+function submitComplaint() {
+    let text = document.getElementById("complaintText").value;
+    let category = document.getElementById("complaintCategory").value;
+
+    if (!text.trim()) return;
+
+    fetch("/submit_complaint", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            message: text,
+            category: category
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        showPopup(data.reply);
+        document.getElementById("complaintText").value = "";
+    });
+}
+
+// Load complaints
+function loadComplaints() {
+    fetch("/get_complaints")
+    .then(res => res.json())
+    .then(data => {
+        let html = data.map(c => `
+            <div class="message bot">
+                <b>ID:</b> ${c.id}<br>
+                <b>Category:</b> ${c.category}<br>
+                <b>Issue:</b> ${c.text}<br>
+                <b>Status:</b> ${c.status}
+            </div>
+        `).join("");
+
+        document.getElementById("complaintList").innerHTML = html || "<p>No complaints yet.</p>";
+    });
+}
+
+// FAQ Answers
+function showAnswer(type) {
+    let answer = "";
+
+    if(type === "library") answer = "The library is located near the main academic block.";
+    if(type === "fees") answer = "Fees can be paid through ERP portal or accounts office.";
+    if(type === "exam") answer = "Exam schedule is available on ERP and notice board.";
+
+    document.getElementById("faqAnswer").innerHTML = `<div class="message bot">${answer}</div>`;
+}
+
+// Popup
+function showPopup(msg) {
+    let popup = document.getElementById("popup");
+    popup.innerHTML = msg; // IMPORTANT for HTML support
+    popup.classList.add("show");
+
+    setTimeout(() => popup.classList.remove("show"), 3000);
+}
+
+// Dark mode
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+}
+
+// Enter handling
+document.getElementById("userInput").addEventListener("keydown", e => {
+    if(e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        sendMessage();
+    }
+});
+
+document.getElementById("complaintText").addEventListener("keydown", e => {
+    if(e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        submitComplaint();
+    }
+});
+
+</script>
+
+</body>
+</html>

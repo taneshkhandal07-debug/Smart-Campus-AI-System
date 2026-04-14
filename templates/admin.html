@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>🔐 Admin</h2>
+        <button onclick="location.reload()">📄 Refresh</button>
+        <button onclick="window.location.href='/logout'">🚪 Logout</button>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <h2>📋 Complaint Management</h2>
+
+        <!-- Logged User -->
+        <h3>👤 Logged in as: {{ username }} ({{ role }})</h3>
+
+        <!-- Happy Students -->
+        <div class="analytics">
+            <div class="card">😊 Happy (<24h): <span>{{ happy }}</span></div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="analytics">
+            <div class="card">Total: <span id="totalCount">0</span></div>
+            <div class="card">Pending: <span id="pendingCount">0</span></div>
+            <div class="card">Seen: <span id="seenCount">0</span></div>
+            <div class="card">Resolved: <span id="resolvedCount">0</span></div>
+            <div class="card">Delayed: <span id="delayedCount">0</span></div>
+        </div>
+
+        <!-- Search -->
+        <input type="text" id="searchInput" placeholder="Search complaints..." onkeyup="filterComplaints()">
+
+        <!-- Complaints -->
+        <div class="admin-container" id="complaintsContainer">
+
+            {% for c in complaints %}
+            <div class="admin-card" data-text="{{ c.text }} {{ c.category }}">
+                
+                <p><b>ID:</b> {{ c.id }}</p>
+                <p><b>Time:</b> {{ c.time }}</p>
+                <p><b>Category:</b> {{ c.category }}</p>
+                <p><b>Issue:</b> {{ c.text }}</p>
+
+                <p>
+                    <b>Status:</b>
+                    <span class="status {{ c.status }}">{{ c.status }}</span>
+                </p>
+
+                <select onchange="updateStatus('{{ c.id }}', this.value)">
+                    <option {% if c.status=='Pending' %}selected{% endif %}>Pending</option>
+                    <option {% if c.status=='Seen' %}selected{% endif %}>Seen</option>
+                    <option {% if c.status=='Resolved' %}selected{% endif %}>Resolved</option>
+                </select>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ================= ROLE-BASED UI ================= */
+let role = "{{ role }}";
+
+let roleClass = "admin";
+
+if(role === "HOD Issue") roleClass = "hod";
+else if(role === "Mentor Issue") roleClass = "mentor";
+else if(role === "Placement (TPO) Issue") roleClass = "tpo";
+else if(role === "Accounts / Fees Issue") roleClass = "accounts";
+
+document.body.classList.add(roleClass);
+
+
+/* ================= UPDATE STATUS ================= */
+function updateStatus(id, status) {
+    fetch("/update_status", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id: id, status: status})
+    }).then(() => location.reload());
+}
+
+
+/* ================= SEARCH ================= */
+function filterComplaints() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".admin-card");
+
+    cards.forEach(card => {
+        let text = card.getAttribute("data-text").toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+
+/* ================= ANALYTICS ================= */
+function updateAnalytics() {
+    let total = 0, pending = 0, seen = 0, resolved = 0, delayed = 0;
+
+    document.querySelectorAll(".status").forEach(s => {
+        total++;
+
+        let status = s.innerText.trim();
+
+        if (status === "Pending") pending++;
+        else if (status === "Seen") seen++;
+        else if (status === "Resolved") resolved++;
+        else if (status === "Delayed") delayed++;
+    });
+
+    document.getElementById("totalCount").innerText = total;
+    document.getElementById("pendingCount").innerText = pending;
+    document.getElementById("seenCount").innerText = seen;
+    document.getElementById("resolvedCount").innerText = resolved;
+    document.getElementById("delayedCount").innerText = delayed;
+}
+
+
+/* Run analytics */
+updateAnalytics();
+
+</script>
+
+</body>
+</html>
