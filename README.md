@@ -1,65 +1,85 @@
-# Smart-Campus-AI-System
-AI-powered campus assistant with complaint management system
-Smart-Campus-AI-System
-AI-powered campus assistant with complaint management system
+# 🎓 Smart Campus AI System
 
-🎓 Smart Campus AI Assistant & Complaint Management System
-🚀 A modern web-based platform designed to simplify student support services using an intelligent chatbot and a structured complaint management system.
+🚀 **Live Demo Link:** https://smart-campus-ai-system.onrender.com  
 
-🌟 Features
-🤖 AI Chatbot
-Answers queries related to:
-📚 Syllabus
-📅 Timetable
-💰 Fees
-📝 Exams
-📊 Attendance
-Smart suggestions for campus navigation
-Interactive chat UI with typing animation
-🛠 Complaint Management System
-Submit complaints with categories:
+  **Live Demo login link:** https://smart-campus-ai-system.onrender.com/login
 
-General Complaint
-Mentor Issue
-Faculty Issue
-HOD Issue
-Hostel Issue
-WiFi / Technical Issue
-Placement (TPO) Issue
-Accounts / Fees Issue
-🚨 Safety / Harassment Concern
-Unique Complaint ID generation
+An AI-powered smart campus platform designed to enhance the student experience through automation, real-time assistance, and efficient complaint management.
 
-Status tracking:
+---
 
-🟡 Pending
-🔵 Seen
-🟢 Resolved
-🟣 Delayed (after 24 hrs)
-👨‍💼 Admin Dashboard
-Role-based login system
-Filter complaints by category
-Update complaint status
-View analytics:
-Total complaints
-Pending / Seen / Resolved
-Delayed issues
-Happy students (<24 hr resolution)
-👨‍🎓 Student Panel
-Submit complaints
-Track complaint status
-Access FAQs & contact info
-Use chatbot for instant help
-🎨 UI/UX Highlights
-Modern dashboard design
-🌙 Dark Mode support
-Smooth animations & transitions
-ChatGPT-like typing indicator
-Clean and responsive interface
-🧰 Tech Stack
-Layer	Technology
-Frontend	HTML, CSS, JavaScript
-Backend	Python (Flask)
-Storage	File-based (TXT)
-Version Control	Git & GitHub
-📂 Project Structure
+## 📌 Overview
+
+The **Smart Campus AI System** is a web-based solution that simplifies student support services by integrating:
+
+- 🤖 Intelligent chatbot for instant query resolution  
+- 🛠 Complaint management system with tracking  
+- 👨‍💼 Role-based admin dashboard  
+- 📊 Real-time analytics for issue monitoring  
+- 🎨 Modern UI with dark mode & smooth interactions  
+
+This system reduces manual effort and improves communication between students and administration.
+
+---
+
+## ✨ Features
+
+### 🤖 AI Chatbot
+- Handles queries related to:
+  - Fees 💰
+  - Exams 📅
+  - Timetable 📚
+  - Attendance 📊
+- Provides instant responses
+- Simulates real-time typing experience
+
+---
+
+### 🛠 Complaint Management System
+- Submit complaints easily
+- Unique Complaint ID generation
+- Track complaint status:
+  - Pending 🟠  
+  - Seen 🔵  
+  - Resolved 🟢  
+  - Delayed 🟣 (auto-detected)
+
+---
+
+### 👨‍💼 Role-Based Admin Dashboard
+- Different access levels:
+  - Admin (Full access)
+  - HOD
+  - Mentor
+  - TPO (Placement)
+  - Accounts
+- Each role views only relevant complaints
+- Status update system with dropdown UI
+
+---
+
+### 📊 Analytics Dashboard
+- Total complaints
+- Pending, Seen, Resolved counts
+- Helps in monitoring resolution efficiency
+
+---
+
+### 🎨 Modern UI/UX
+- Clean dashboard layout
+- Dark mode support 🌙
+- Smooth animations & transitions
+- Interactive components
+
+---
+
+## 🛠 Tech Stack
+
+- **Backend:** Python (Flask)
+- **Frontend:** HTML, CSS, JavaScript
+- **Deployment:** Render
+- **Version Control:** Git & GitHub
+
+---
+
+## 📂 Project Structure
