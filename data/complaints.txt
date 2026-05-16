@@ -2,21 +2,12 @@ C1358 | 2026-04-06 11:08:48 | I have Complaints with teachers
 C5372 | 2026-04-07 21:23:35 | i dont like canteen food
 C7117 | 2026-04-07 21:23:56 | hii
 
-C2838 | 2026-04-07 21:37:28 | sc sc ssc scdscsdcdsc dcdsd d
-C5727 | 2026-04-07 21:37:35 | dsvsdv
-C9698 | 2026-04-07 21:42:19 | college ganda h
-C5311 | 2026-04-08 20:11:35 | cx xsz  
-C6735 | 2026-04-08 20:19:51 | hi
 C7055 | 2026-04-08 20:41:03 | i dont like food at canteen | Resolved
 C7721 | 2026-04-08 20:41:08 | college hi ganda h | Pending
 C4039 | 2026-04-08 20:41:12 | i have teachers here | Seen
 C7070 | 2026-04-08 20:51:57 | axcasccsdvdsvsd | Pending
-C5126 | 2026-04-08 20:59:13 | vdfvd | Pending
 C3765 | 2026-04-09 11:31:36 | i dont like food | Seen
-C9286 | 2026-04-09 11:31:40 | sddsvdsv | Resolved
 C4896|2026-04-09T18:53:13.624456|HOD Issue|i need one month leave|Resolved
 C4458|2026-04-09T18:53:24.772087|Accounts / Fees Issue|how to pay fees|Resolved
-C9203|2026-04-09T18:53:40.496547|General Complaint|college hi ganda h|Pending
-C7448|2026-04-09T19:27:37.981608|HOD Issue|aap bavle ho|Seen
 C9188|2026-04-11T11:28:23.743799|Accounts / Fees Issue|fees kaisi bharni h|Resolved
-C2689|2026-04-11T21:29:59.646817|Hostel Issue|hostel gqande rehte h|Pending
+C2689|2026-04-11T21:29:59.646817|Hostel Issue|hostel room number 102 have cleaning issues.|Pending
