@@ -65,6 +65,8 @@ This system reduces manual effort and improves communication between students an
 - Total complaints
 - Pending, Seen, Resolved counts
 - Helps in monitoring resolution efficiency
+<img width="1920" height="1080" alt="Screenshot (40)" src="https://github.com/user-attachments/assets/97a576a6-8e81-4b5b-9f16-4436b75cc985" />
+<img width="1920" height="1080" alt="Screenshot (34)" src="https://github.com/user-attachments/assets/34481461-a4e4-49e2-ad38-49a2025b31f7" />
 
 
 ---
@@ -74,6 +76,9 @@ This system reduces manual effort and improves communication between students an
 - Dark mode support 🌙
 - Smooth animations & transitions
 - Interactive components
+<img width="1920" height="1080" alt="Screenshot (35)" src="https://github.com/user-attachments/assets/c42ac94e-278a-420b-b6ce-6374417a7580" />
+<img width="1920" height="1080" alt="Screenshot (36)" src="https://github.com/user-attachments/assets/fcaf0557-8630-457c-8ba7-a7caaac96e5e" />
+
 
 ---
 
