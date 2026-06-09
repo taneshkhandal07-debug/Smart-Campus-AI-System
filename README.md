@@ -65,7 +65,7 @@ This system reduces manual effort and improves communication between students an
 - Total complaints
 - Pending, Seen, Resolved counts
 - Helps in monitoring resolution efficiency
-<img width="1920" height="1080" alt="Screenshot 2026-04-11 123234" src="https://github.com/user-attachments/assets/b16abf77-0c36-4b84-8efc-9bf709e43af4" />
+
 
 ---
 
