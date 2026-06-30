@@ -128,6 +128,7 @@ Rather than just "does it run," the project was scoped against:
 
 ## 📂 Project Structure
 
+```
 Smart-Campus-AI-System/
 │
 ├── data/
@@ -145,4 +146,4 @@ Smart-Campus-AI-System/
 ├── utils.py                    # chatbot logic, complaint save/retrieve helpers
 ├── requirements.txt
 └── README.md
-
+```
