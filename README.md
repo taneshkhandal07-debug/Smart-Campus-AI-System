@@ -4,7 +4,17 @@
 
   **Live Demo login link:** https://smart-campus-ai-system.onrender.com/login
 
-An AI-powered smart campus platform designed to enhance the student experience through automation, real-time assistance, and efficient complaint management.
+Students at most colleges deal with slow, opaque complaint handling — questions go unanswered for days, complaints submitted on paper or over email disappear into a black box, and there's no way to check status without chasing someone down. Administrative staff juggle complaints across departments with no shared system, leading to duplicated effort and no visibility into what's actually getting resolved.
+Smart Campus AI System centralizes this: a chatbot handles common student questions instantly, complaints are submitted and tracked digitally with a unique ID, and each administrative department only sees the complaints relevant to them — solo-built end to end, including the multi-role permission model.
+
+---
+## Who this is for
+
+**Students** who need quick answers to routine questions and a way to submit and track complaints without chasing staff for updates.
+
+**Administrative staff** (Admin, HOD, Mentor, TPO, Accounts) who need department-specific visibility into complaints instead of a single shared, unsorted inbox.
+
+**College management**, who need aggregate analytics on complaint volume and resolution speed rather than relying on anecdotal reporting from each department.
 
 ---
 
@@ -33,7 +43,7 @@ This system reduces manual effort and improves communication between students an
 - Provides instant responses
 - Simulates real-time typing experience
 <img width="1920" height="1080" alt="Screenshot 2026-04-14 110117" src="https://github.com/user-attachments/assets/a5aa1c58-5e2f-4f12-9d7a-820aab7f5418" />
-
+*(Rule-based in v1 — see Product Decisions below for why.)*
 ---
 
 ### 🛠 Complaint Management System
@@ -79,6 +89,31 @@ This system reduces manual effort and improves communication between students an
 <img width="1920" height="1080" alt="Screenshot (35)" src="https://github.com/user-attachments/assets/c42ac94e-278a-420b-b6ce-6374417a7580" />
 <img width="1920" height="1080" alt="Screenshot (36)" src="https://github.com/user-attachments/assets/fcaf0557-8630-457c-8ba7-a7caaac96e5e" />
 
+
+---
+## Product Decisions
+
+A few calls made deliberately when scoping v1, rather than just "what I had time to build":
+
+**Rule-based chatbot over generative AI, for v1.** The chatbot resolves a fixed set of common query categories (fees, exams, timetable, attendance) using rule-based logic rather than an LLM. This kept response behavior predictable and easy to validate for a first release — generative AI chatbot capability is explicitly scoped for Phase 3, once there's more usage data to ground it in.
+
+**Five roles, not one shared inbox.** Modeling Admin, HOD, Mentor, TPO, and Accounts as separate access levels — each seeing only their relevant complaints — was a deliberate design choice over a simpler single-queue system, because a shared inbox doesn't reflect how complaint ownership actually works across departments. This was the most complex piece of the product to reason through solo, since it meant mapping which complaint categories belong to which real-world department.
+
+**Delayed-complaint detection was automated, not manual.** Rather than relying on staff to notice an overdue complaint, the system automatically flags anything that exceeds its expected resolution timeline — directly targeting the lack of complaint transparency identified as a core pain point.
+
+**No mobile app or external integrations (WhatsApp, SMS) in v1.** Scoped out deliberately to ship a working web platform first; both are on the Phase 2/3 roadmap rather than cut entirely.
+
+**Deliberately out of scope for v1:** email/SMS notifications, automated complaint routing, voice-enabled chatbot, mobile app, WhatsApp integration, sentiment analysis — all roadmapped for later phases.
+
+---
+
+## How Success Was Defined
+
+Rather than just "does it run," the project was scoped against:
+- Complaint submission rate and chatbot usage frequency
+- Average resolution time and resolution rate
+- Delayed-complaint percentage
+- Reduction in administrative workload (qualitative)
 
 ---
 
