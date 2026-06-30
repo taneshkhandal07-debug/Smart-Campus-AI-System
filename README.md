@@ -44,12 +44,12 @@ Five distinct access levels, each scoped to relevant complaints only:
 ### 📊 Analytics Dashboard
 Real-time view of total, pending, seen, and resolved complaints — built so management can monitor resolution efficiency without pulling manual reports.
 
-![Analytics Dashboard](./Screenshot%20(40).png)
+![Analytics Dashboard](./Screenshot%20(22).png)
 
 ### 🎨 Modern UI/UX
 Responsive layout, dark mode, and smooth transitions across the dashboard.
 
-![UI Dark Mode](./Screenshot%20(35).png)
+![UI Dark Mode](./Screenshot%20(23).png)
 
 ---
 
@@ -95,4 +95,3 @@ Rather than just "does it run," the project was scoped against:
 ## ⭐ Support
 
 If you found this project useful, consider giving it a star and sharing it!
-
