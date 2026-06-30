@@ -130,20 +130,32 @@ Rather than just "does it run," the project was scoped against:
 
 ```
 Smart-Campus-AI-System/
+
 │
 ├── data/
+
 │   └── complaints.txt          # flat-file storage for submitted complaints
+
 │
 ├── static/
+
 │   └── (CSS, JS, and other front-end assets)
 │
+
 ├── templates/
+
 │   ├── index.html              # student-facing chatbot + complaint UI
+
 │   ├── login.html              # admin/staff login
+
 │   └── admin.html              # role-filtered complaint dashboard
 │
+
 ├── app.py                      # Flask routes, auth, role-based filtering
+
 ├── utils.py                    # chatbot logic, complaint save/retrieve helpers
+
 ├── requirements.txt
+
 └── README.md
 ```
